@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %} {% block main %}
+<h1 class="mb-5">Games</h1>
+
+{% for game in games %}
+<div class="mb-5">
+  <img src={{ game['cover']['url'] }} alt="">
+  <h2>{{ game['name'] }}</h2>
+  <h3>
+    Release year: {{
+    datetime.utcfromtimestamp(game['first_release_date']).strftime('%Y') }},
+    Developed by: {{ game['involved_companies'][0]['company']['name'] }}
+  </h3>
+  <hr />
+  <p>{{ game['summary'] }}</p>
+</div>
+{% endfor %} {% endblock %}
